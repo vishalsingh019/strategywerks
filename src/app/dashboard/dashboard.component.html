@@ -1,0 +1,12 @@
+
+<div class="list-header">
+    <button class="button back-btn" routerLink="/list">Go to Items List</button>
+    <label>Dashboard</label>
+</div>
+<div  class="item-wrapper" *ngIf="favItemList.length > 0">
+    <app-item-box *ngFor="let item of favItemList" [itemObj]="item" [showButtons]="false"></app-item-box>
+</div>
+
+<div  class="no-data" *ngIf="favItemList.length == 0">
+    No Favorite Item Selected
+</div>

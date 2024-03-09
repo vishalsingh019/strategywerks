@@ -1,0 +1,14 @@
+
+
+<div class="list-header">
+    <button class="button back-btn" routerLink="/">Back to Dashboard</button>
+    <label>List of Items</label>
+</div>
+<div [scrollTop]="scrollTopPosition"  class="item-wrapper" (scroll)="onScrollLoadData()" #list >
+    <app-item-box *ngFor="let item of listItemArray" [itemObj]="item" (AddFavClickEvent)="addFav(item)" (RemoveFavClickEvent)="removeFav(item)"></app-item-box>
+
+</div>
+
+
+<app-loader *ngIf="loader"></app-loader>
+
