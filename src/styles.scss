@@ -47,6 +47,10 @@ body {
     text-align: center;
     display: flex;
     justify-content: space-between;
+
+    @media only screen and (max-width: 768px) {
+        font-size: 16px;
+  }
 }
 
 
@@ -58,7 +62,17 @@ body {
     padding: 0px 16px;
     overflow: auto;
     height: 85vh;
+    @media only screen and (max-width: 768px) {
+            grid-template-columns: 1fr ;
+      }
+  
 }
+
+// @media only screen and (max-width: 768px) {
+//     .item-wrapper {
+//         grid-template-columns: 1fr ;
+//     }
+//   }
 
 .loader-wrapper{
 
@@ -83,6 +97,13 @@ body {
     padding: 0px 8px;
     line-height: 30px;
     cursor: pointer;
+
+    @media only screen and (max-width: 768px) {
+        font-size: 12px;
+        line-height: 16px;
+  }
+
+    
 }
 
 .card {
