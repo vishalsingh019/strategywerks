@@ -1,4 +1,4 @@
-# ClarivateAssessment
+# StrategyWerksAssessment
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.1.
 
@@ -25,3 +25,15 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+
+## Additional Enhancements
+
+- We can implement search feature with debouncing to reduce the number of API calls
+- We can work on optimization of images
+
+## Limitation
+
+- We can improve the product filter process getting the data from database.
+- Currently i am filtering the data on frontend which is not ideal when you have implemented lazy loading on data.

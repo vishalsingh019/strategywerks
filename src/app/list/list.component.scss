@@ -1,2 +1,60 @@
 
+@import './../../assets/variable';
 
+.filter-icon{
+    background: $colorHeader;
+    color: $colorWhite;
+    width: fit-content;
+    padding: 16px;
+    border-radius: 16px;
+    position: absolute;
+    right: 10px;
+    bottom: 5%;
+    cursor: pointer;
+}
+
+.filter{
+    display: block;
+    background-color: $colorWhite;
+    height: 85vh;
+    width: 250px;
+    position: absolute;
+    right: 0;
+    top: 70px;
+    padding: 16px;
+    border: 1px solid #c2bebe;
+    border-radius: 10px;
+
+    .filter-head{
+        font-size: 24px ;
+        font-weight: 600;
+        padding-bottom: 16px;
+        margin-bottom: 16px;
+        border-bottom: 1px solid #f1f1f1;
+
+    }
+}
+
+.hide{
+    display: none;
+}
+
+.add-btn{
+    border: 1px solid $colorGreen;
+    color: $colorGreen;
+    border-radius: 10px;
+    width: 20%;
+    margin: 16px;
+}
+
+.add-btn:hover {
+   color: white;
+   background: $colorGreen;
+}
+
+.button-wrapper{
+    margin-left: 16px;
+    label{
+        font-weight: 600;
+    }
+}

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "clarivate-assessment": {
+    "strategywerks-ecomm": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/clarivate-assessment",
+            "outputPath": "dist/strategywerks-ecomm",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -69,10 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "clarivate-assessment:build:production"
+              "browserTarget": "strategywerks-ecomm:build:production"
             },
             "development": {
-              "browserTarget": "clarivate-assessment:build:development"
+              "browserTarget": "strategywerks-ecomm:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -80,7 +80,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "clarivate-assessment:build"
+            "browserTarget": "strategywerks-ecomm:build"
           }
         },
         "test": {

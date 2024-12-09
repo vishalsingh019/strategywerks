@@ -1,10 +1,11 @@
 import { ActivatedRouteSnapshot, RouteReuseStrategy, DetachedRouteHandle, UrlSegment } from '@angular/router'
 
 export class CustomReuseStrategy implements RouteReuseStrategy {
+
   storedHandles: { [key: string]: DetachedRouteHandle } = {};
 
   shouldDetach(route: ActivatedRouteSnapshot): boolean {
-    return route.data['reuseRoute'] ;
+    return route.data['reuseRoute'] || false;
   }
 
   store(route: ActivatedRouteSnapshot, handle: DetachedRouteHandle): void {
@@ -12,8 +13,6 @@ export class CustomReuseStrategy implements RouteReuseStrategy {
     if (route.data['reuseRoute']) {
       this.storedHandles[id] = handle;
     }
-
-    // console.log(this.storedHandles, 'STORE')
   }
 
   shouldAttach(route: ActivatedRouteSnapshot): boolean {
@@ -23,23 +22,21 @@ export class CustomReuseStrategy implements RouteReuseStrategy {
     return canAttach;
   }
 
-  retrieve(route: ActivatedRouteSnapshot): any {
+  retrieve(route: ActivatedRouteSnapshot): DetachedRouteHandle {
     const id = this.createIdentifier(route);
-    if (!route.routeConfig || !this.storedHandles[id]) return null;
+    if (!route.routeConfig || !this.storedHandles[id]) return 'null';
     return this.storedHandles[id];
   }
 
   shouldReuseRoute(future: ActivatedRouteSnapshot, curr: ActivatedRouteSnapshot): boolean {
-    // console.log(future.routeConfig, curr.routeConfig)
     return future.routeConfig === curr.routeConfig;
   }
 
   private createIdentifier(route: ActivatedRouteSnapshot) {
-//   console.log(route.pathFromRoot)
+    // Build the complete path from the root to the input route
     const segments: UrlSegment[][] = route.pathFromRoot.map(r => r.url);
     const subpaths = ([] as UrlSegment[]).concat(...segments).map(segment => segment.path);
-
-    // console.log(segments.length + '-' + subpaths.join('/'))
+    // Result: ${route_depth}-${path}
     return segments.length + '-' + subpaths.join('/');
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef,  AfterViewInit } from '@angular/core';
 import { ListItemService } from '../shared/service/listItem.service';
+import * as _ from 'lodash'; 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -14,16 +15,19 @@ export class ListComponent implements OnInit , AfterViewInit   {
   @ViewChild('list', { static: false }) public list!: ElementRef<HTMLElement>;
   public selectedFavItemArray: any = []
 
-  constructor(private service: ListItemService) { 
-  
-  }
+  public filterFlag: boolean = false;
+  filterData: any;
+  public masterData: any = [];
+
+  constructor(private service: ListItemService) { }
 
   ngOnInit(): void {
     this.service.getListItems(this.pageIndex).subscribe((data)=>{
-      this.listItemArray = data;
-      this.listItemArray.forEach((obj: any) => {
+      this.masterData = data.products;
+      this.masterData.forEach((obj: any) => {
       obj.addFav = false
       });
+      this.listItemArray = _.cloneDeep(this.masterData)
       this.loader = false;
     });
 
@@ -40,10 +44,11 @@ export class ListComponent implements OnInit , AfterViewInit   {
 
   public getListItemData(): void {
     this.service.getListItems(this.pageIndex).subscribe((data: any)=>{
-      data.forEach((obj: any) => {
+      data.products.forEach((obj: any) => {
         obj.addFav = false
         });
-      this.listItemArray = [...this.listItemArray, ...data];
+      this.masterData = [...this.masterData, ...data.products];
+      this.listItemArray = _.cloneDeep(this.masterData)
       this.loader = false;
     });
 
@@ -54,8 +59,8 @@ export class ListComponent implements OnInit , AfterViewInit   {
     const nativeElement= this.list.nativeElement
     this.service.scrollTop = nativeElement.scrollTop;       // saving the last scrolled position
     if(nativeElement.clientHeight + Math.round(nativeElement.scrollTop) >= nativeElement.scrollHeight && !this.loader){      // do not call API or increment pageindex unit loader is false
-      console.log(' Bottom')
-      if(this.listItemArray.length === (this.pageIndex*10)){
+      console.log(' Bottom', this.pageIndex, this.masterData.length)
+      if(this.masterData.length === (this.pageIndex*10)){
       this.pageIndex += 1; 
       this.loader = true;
       this.getListItemData()
@@ -81,7 +86,29 @@ export class ListComponent implements OnInit , AfterViewInit   {
   }
 
 
+  public applyFilter(filterData: any): void {
+    console.log(filterData)
+
+    // this.listItemArray = []
+
+    this.listItemArray = this.masterData.filter( (obj: any) => 
+      obj.rating < filterData.selectedFilter && 
+      obj.price >= filterData.minValue && 
+      obj.price <= filterData.maxValue
+    );
+
+    console.log(this.listItemArray)
+
+  }
+
   
   
+  public lowToHigh(): void {
+    this.listItemArray.sort((a: { price: any; }, b: { price: any; }) => parseFloat(a.price) - parseFloat(b.price));
+  }
+
+  public highToLow(): void {
+    this.listItemArray.sort((a: { price: any; }, b: { price: any; }) => parseFloat(b.price) - parseFloat(a.price));
+  }
 
 }

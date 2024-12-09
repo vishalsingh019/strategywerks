@@ -1,0 +1,23 @@
+<div class="filter-wrapper">
+    <div class="filter-values">
+        <p>Price Range</p>
+        <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ngx-slider>
+     </div>
+
+     <div class="filter-values">
+        <p>Rating</p>
+         <select [(ngModel)]="selectedFilter">
+            <option [value]="6">All</option>
+            <option [value]="5">5 and less than 5 </option>
+            <option [value]="4">less than 4  </option>
+            <option [value]="3">less than 3 </option>
+            <option [value]="2">less than 2 </option>
+         
+         </select>
+     </div>
+
+     <div class="button-wrapper">
+        <button  class="button add-btn" (click)="applyFilter()">Apply</button>
+        <button  class="button can-btn" (click)="cancelClicked()">Cancel</button>
+     </div>
+</div>

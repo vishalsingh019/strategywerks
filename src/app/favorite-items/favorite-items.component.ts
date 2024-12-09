@@ -1,13 +1,14 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ListItemService } from '../shared/service/listItem.service';
 
+
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  selector: 'app-favorite-items',
+  templateUrl: './favorite-items.component.html',
+  styleUrls: ['./favorite-items.component.scss']
 })
-export class DashboardComponent implements OnInit, OnDestroy {
-   public favItemList: any = [];
+export class FavoriteItemsComponent implements OnInit {
+  public favItemList: any = [];
 
   constructor(public http: ListItemService) { }
 
@@ -21,6 +22,5 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.http.triggerScroll(0);
  
   }
-
 
 }

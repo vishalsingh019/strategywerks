@@ -1,3 +1,5 @@
+@import './../../../assets/variable';
+
 .box-wrapper{
     background: white;
     padding: 8px;
@@ -6,6 +8,7 @@
 
 .img-wrapper {
     // border-radius: 10px;
+    cursor: pointer;
     img {
         border-radius: 5px;
         width: 100%;
@@ -20,19 +23,42 @@
 
 
 .add-btn{
-    border: 1px solid green;
-    color: green;
+    border: 1px solid $colorGreen;
+    color: $colorGreen;
+    border-radius: 10px;
+}
+
+.add-btn:hover {
+   color: white;
+   background: $colorGreen;
+}
+
+.buy-btn{
+    border: 1px solid $colorYellow;
+    background: $colorYellow;
+    color: black;
+    border-radius: 10px;
+    margin: 8px 0px;
+
 }
 
 .remove-btn{
     border: 1px solid rgb(174, 27, 27);
     color: rgb(174, 27, 27);
+    border-radius: 10px;
+}
+
+.remove-btn:hover{
+    color: white;
+    background: rgb(174, 27, 27);
+
 }
 
 .title{
     margin: 8px 2px;
     font-size: 12px;
     min-height: 20px;
+    font-weight: 600;
 }
 
 }

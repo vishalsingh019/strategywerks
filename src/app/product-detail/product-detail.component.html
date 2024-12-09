@@ -1,0 +1,42 @@
+<app-header></app-header>
+
+
+<div class="product-wrapper ">
+ <div class="img-section ">
+    <img class="card" *ngFor="let img of productDetails.images" ngSrc={{img}} height="300" width="300" priority>
+ </div>
+
+ <div class="product-details">
+    <div class="name-price-details card">
+        <label class="name">{{productDetails.title}} (<app-star-rating [selectedStar]=productDetails.rating></app-star-rating>)</label>
+        <label class="price">&#8377; {{productDetails.price}}</label>
+
+        <div class="minor-details">
+            <div>Category: <label>{{productDetails.category}}</label></div>
+            <div>Return: <label>{{productDetails.returnPolicy}}</label></div>
+            <div>Stock Available: <label>{{productDetails.stock}}</label></div>
+            <div>Warranty: <label>{{productDetails.warrantyInformation}}</label></div>
+            <div>Availability: <label style="color: green;">{{productDetails.availabilityStatus}}</label></div>
+        </div>
+        <div class="product-desc">
+         {{productDetails.description}}
+        </div>
+     
+    </div>
+    <div class="review card">
+     <div *ngFor="let rev of productDetails.reviews"  class="review-wrapper">
+        <i class="fa fa-user" aria-hidden="true"></i>
+        <div class="review-detail" >
+            <label class="review-name"> {{rev.reviewerName}}</label>
+            <label><app-star-rating [selectedStar]=rev.rating></app-star-rating></label>
+            <div class="review-msg">
+              {{rev.comment}}
+            </div>
+
+        </div>
+     </div>
+    </div>
+
+ </div>
+
+</div>

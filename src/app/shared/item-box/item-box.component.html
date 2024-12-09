@@ -1,15 +1,17 @@
 
 <div class="box-wrapper">
     <div class="img-wrapper">
-        <img src="{{itemObj.url}}" alt="" >
+        <img ngSrc="{{itemObj.images[0]}}" alt="" (click)="productClicked(itemObj)" width="250" height="250" priority>
     </div>
   <div class="ids">
-    <label>Album ID: {{itemObj.albumId}}</label>
-    <label>Image ID: {{itemObj.id}}</label>
+    <label>Price: &#8377; {{itemObj.price}}</label>
+    <label>Rating: {{itemObj.rating}}</label>
+    <label>Category: {{itemObj.category}}</label>
   </div>
   <div class="title">{{itemObj.title}}</div>
   <div class="button-wrapper" *ngIf="showButtons">
     <button *ngIf="!itemObj.addFav" class="button add-btn" (click)="addFav(itemObj)">Add to Favorite</button>
     <button *ngIf="itemObj.addFav" class=" button remove-btn" (click)="removeFav(itemObj)">Remove from Favorite</button>
   </div>
+  <button class="button buy-btn">Buy Now</button>
 </div>

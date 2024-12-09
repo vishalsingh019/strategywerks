@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'clarivate-assessment'`, () => {
+  it(`should have as title 'strategywerks-ecomm'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('clarivate-assessment');
+    expect(app.title).toEqual('strategywerks-ecomm');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('clarivate-assessment app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('strategywerks-ecomm app is running!');
   });
 });

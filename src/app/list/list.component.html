@@ -1,14 +1,25 @@
 
 
-<div class="list-header">
-    <button class="button back-btn" routerLink="/">Back to Dashboard</button>
-    <label>List of Items</label>
+<app-header></app-header>
+
+<div class="button-wrapper">
+    <label>Price :</label>
+    <button class="button add-btn" (click)="lowToHigh()">Low to High</button>
+    <button class="button add-btn" (click)="highToLow()">High to Low</button>
 </div>
+
 <div [scrollTop]="scrollTopPosition"  class="item-wrapper" (scroll)="onScrollLoadData()" #list >
     <app-item-box *ngFor="let item of listItemArray" [itemObj]="item" (AddFavClickEvent)="addFav(item)" (RemoveFavClickEvent)="removeFav(item)"></app-item-box>
-
 </div>
 
+<div class="filter-icon" *ngIf="!filterFlag" (click)="filterFlag = !filterFlag">
+    <i class="fa fa-filter" aria-hidden="true"></i>
+</div>
+
+<div class="filter" [class.hide]="!filterFlag">
+ <div class="filter-head">Filters</div>
+ <app-product-filter (filterButtonClickEvent)="applyFilter($event)" (cancelButtonClickEvent)="filterFlag = !filterFlag"></app-product-filter>
+</div>
 
 <app-loader *ngIf="loader"></app-loader>
 
